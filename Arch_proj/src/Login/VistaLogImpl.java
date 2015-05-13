@@ -69,7 +69,7 @@ public class VistaLogImpl implements VistaLogin {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 385, 322);
+		frame.setBounds(100, 100, 385, 254);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -88,12 +88,20 @@ public class VistaLogImpl implements VistaLogin {
 		frame.getContentPane().add(txtUser);
 		txtUser.setColumns(10);
 		
+		lblLogError = new JLabel("User and/or password incorrect");
+		lblLogError.setForeground(Color.RED);
+		lblLogError.setBounds(28, 243, 225, 16);
+		lblLogError.setVisible(false);
+		frame.getContentPane().add(lblLogError);
+		
+		
 		JButton btnLogIn = new JButton("Log In");
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(controlador.solicitadoLogin()){
 					setVisible();
 				}else{
+					frame.setBounds(100, 100, 385, 322);
 					lblLogError.setVisible(true);
 				}
 				
@@ -116,15 +124,14 @@ public class VistaLogImpl implements VistaLogin {
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				System.exit(0);
+				
 			}
 		});
 		btnLogOut.setBounds(136, 181, 117, 29);
 		frame.getContentPane().add(btnLogOut);
 		
-		lblLogError = new JLabel("User and/or password incorrect");
-		lblLogError.setForeground(Color.RED);
-		lblLogError.setBounds(28, 243, 225, 16);
-		frame.getContentPane().add(lblLogError);
+
 		
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(152, 82, 134, 28);
