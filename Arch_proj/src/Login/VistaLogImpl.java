@@ -71,7 +71,6 @@ public class VistaLogImpl implements VistaLogin {
 		txtUser.setBounds(152, 38, 134, 28);
 		frame.getContentPane().add(txtUser);
 		txtUser.setColumns(10);
-		lblLogError.setVisible(false);
 		
 		JButton btnLogIn = new JButton("Log In");
 		btnLogIn.addActionListener(new ActionListener() {
