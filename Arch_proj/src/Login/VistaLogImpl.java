@@ -18,7 +18,7 @@ import javax.swing.JPasswordField;
 public class VistaLogImpl implements VistaLogin {
 	private Modelo modelo;
 	private Controlador controlador;
-	//GRAPHICS
+	// GRAPHICS
 	private JFrame frame;
 	private JTextField txtUser;
 	private JPasswordField passwordField;
@@ -48,19 +48,21 @@ public class VistaLogImpl implements VistaLogin {
 
 		passwordField = new JPasswordField();
 
-		JButton btnNewButton = new JButton("Entrar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnLogin = new JButton("Entrar");
+		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				controlador.solicitadoLogin();
+				if (controlador.solicitadoLogin()) {
+					frame.setVisible(false);
+					System.out.println("LOG IN");
+				}
 			}
 		});
 
-		JButton btnNewButton_1 = new JButton("Registrarse");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnRegister = new JButton("Registrarse");
+		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				controlador.solicitadoLogin();
-				if(modelo.login()){
-					setVisible();
+				if (controlador.solicitadoLogin()) {
+					frame.setVisible(false);
 					System.out.println("LOG IN");
 				}
 			}
@@ -113,7 +115,7 @@ public class VistaLogImpl implements VistaLogin {
 																		.createSequentialGroup()
 																		.addGap(323)
 																		.addComponent(
-																				btnNewButton,
+																				btnLogin,
 																				GroupLayout.DEFAULT_SIZE,
 																				97,
 																				Short.MAX_VALUE))
@@ -124,7 +126,7 @@ public class VistaLogImpl implements VistaLogin {
 																				323,
 																				Short.MAX_VALUE)
 																		.addComponent(
-																				btnNewButton_1)))
+																				btnRegister)))
 										.addContainerGap()));
 		groupLayout
 				.setVerticalGroup(groupLayout
@@ -158,8 +160,8 @@ public class VistaLogImpl implements VistaLogin {
 										.addPreferredGap(
 												ComponentPlacement.RELATED)
 										.addComponent(lblWP).addGap(62)
-										.addComponent(btnNewButton).addGap(18)
-										.addComponent(btnNewButton_1)
+										.addComponent(btnLogin).addGap(18)
+										.addComponent(btnRegister)
 										.addContainerGap(25, Short.MAX_VALUE)));
 		frame.getContentPane().setLayout(groupLayout);
 	}
@@ -167,13 +169,13 @@ public class VistaLogImpl implements VistaLogin {
 	@Override
 	public void setControlador(Controlador controlador) {
 		this.controlador = controlador;
-		
+
 	}
 
 	@Override
 	public void setModelo(Modelo modelo) {
 		this.modelo = modelo;
-		
+
 	}
 
 	@Override
@@ -192,6 +194,6 @@ public class VistaLogImpl implements VistaLogin {
 			frame.setVisible(false);
 		else
 			frame.setVisible(true);
-		
+
 	}
 }

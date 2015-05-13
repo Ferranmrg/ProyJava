@@ -15,10 +15,11 @@ public class ControladorImpl implements Controlador{
 		this.vistaLogin = vista;
 	}
 	
-	public void solicitadoLogin(){
+	public boolean solicitadoLogin(){
 		String user = vistaLogin.getUser();
 		String pwd = vistaLogin.getPassword();
 		modelo.setDatos(user, pwd);
+		return modelo.login();
 	}
 
 }
