@@ -6,5 +6,4 @@ public interface VistaLogin {
 	public String getUser();
 	public String getPassword();
 	public void setVisible();
-	//PENE
 }
