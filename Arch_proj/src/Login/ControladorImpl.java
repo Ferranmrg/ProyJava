@@ -25,4 +25,9 @@ class ControladorImpl implements Controlador {
 		return modelo.login();
 	}
 
+	@Override
+	public void solicitadoRegistro() {
+		
+	}
+
 }
