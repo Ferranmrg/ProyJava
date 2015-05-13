@@ -26,26 +26,42 @@ public class VistaLogImpl implements VistaLogin {
 	private JLabel lblLogError;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaLogImpl window = new VistaLogImpl();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public VistaLogImpl() {
 		initialize();
+	}
+	@Override
+	public void setControlador(Controlador controlador) {
+		this.controlador = controlador;
+		
+	}
+
+	@Override
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
+		
+	}
+
+	@Override
+	public String getUser() {
+		return txtUser.getText();
+		
+	}
+
+	@Override
+	public String getPassword() {
+		return new String(txtPassword.getPassword());
+	}
+
+	@Override
+	public void setVisible() {
+		if(frame.isVisible() == true ){
+			frame.setVisible(false);
+		}else{
+			frame.setVisible(true);
+		}
+		
 	}
 
 	/**
@@ -75,8 +91,7 @@ public class VistaLogImpl implements VistaLogin {
 		JButton btnLogIn = new JButton("Log In");
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if(modelo.login()){
+				if(controlador.solicitadoLogin()){
 					setVisible();
 				}else{
 					lblLogError.setVisible(true);
@@ -114,38 +129,5 @@ public class VistaLogImpl implements VistaLogin {
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(152, 82, 134, 28);
 		frame.getContentPane().add(txtPassword);
-	}
-
-	@Override
-	public void setControlador(Controlador controlador) {
-		this.controlador = controlador;
-		
-	}
-
-	@Override
-	public void setModelo(Modelo modelo) {
-		this.modelo = modelo;
-		
-	}
-
-	@Override
-	public String getUser() {
-		return txtUser.getText();
-		
-	}
-
-	@Override
-	public String getPassword() {
-		return new String(txtPassword.getPassword());
-	}
-
-	@Override
-	public void setVisible() {
-		if(frame.isVisible() == true ){
-			frame.setVisible(false);
-		}else{
-			frame.setVisible(true);
-		}
-		
 	}
 }
