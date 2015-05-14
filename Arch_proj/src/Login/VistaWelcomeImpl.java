@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 
 import com.sun.glass.events.MouseEvent;
 
-public class VistaWelcomeImpl {
+public class VistaWelcomeImpl implements VistaWelcome{
 
 	private JFrame frame;
 	private Modelo modelo;
@@ -48,7 +48,7 @@ public class VistaWelcomeImpl {
 				 int fila = table.rowAtPoint(arg0.getPoint());
 		         int columna = table.columnAtPoint(arg0.getPoint());
 		         if ((fila > -1) && (columna > -1))
-		            System.out.println(defTable.getValueAt(fila,columna));
+		           txtNick.setText((String) defTable.getValueAt(fila,columna));
 		
 			}
 		});
@@ -111,6 +111,28 @@ public class VistaWelcomeImpl {
 		
 
 		
+		
+	}
+
+	@Override
+	public void setControlador(Controlador controlador) {
+		this.controlador = controlador;
+		
+	}
+
+	@Override
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
+		
+	}
+
+	@Override
+	public void setVisible() {
+		if(frame.isVisible() == true ){
+			frame.setVisible(false);
+		}else{
+			frame.setVisible(true);
+		}
 		
 	}
 	
