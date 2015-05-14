@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VistaSignImpl implements VistaSign {
 
@@ -94,6 +96,14 @@ public class VistaSignImpl implements VistaSign {
 		frame.getContentPane().add(btnRegister);
 		
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controlador.cambioVentanasLogSign();
+				
+				
+			}
+		});
 		btnCancel.setBounds(277, 213, 117, 29);
 		frame.getContentPane().add(btnCancel);
 	}

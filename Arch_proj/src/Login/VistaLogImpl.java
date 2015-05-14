@@ -116,7 +116,7 @@ public class VistaLogImpl implements VistaLogin {
 			public void actionPerformed(ActionEvent e) {
 				
 				
-				
+				controlador.cambioVentanasLogSign();
 				
 				
 			}

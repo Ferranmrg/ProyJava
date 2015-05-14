@@ -28,8 +28,25 @@ class ControladorImpl implements Controlador {
 
 	@Override
 	public void solicitadoRegistro() {
+
+	}
+
+	@Override
+	public void setVistaSign(VistaSign vistasign) {
+		// TODO Auto-generated method stub
+		this.vistasign = vistasign;
+		
+
+	}
+
+	@Override
+	public void cambioVentanasLogSign() {
+		vistasign.setVisible();
+		vista.setVisible();
 		
 	}
 
+	
+	
 
 }
