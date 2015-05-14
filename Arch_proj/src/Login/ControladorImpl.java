@@ -4,7 +4,7 @@ class ControladorImpl implements Controlador {
 	private Modelo modelo;
 	private VistaLogin vista;
 	private VistaSign vistasign;
-	private String user, pwd;
+	private String user, pwd, nicksign,emailsign,passsign,repetirsign;
 
 	@Override
 	public void setModelo(Modelo modelo) {
@@ -28,7 +28,16 @@ class ControladorImpl implements Controlador {
 
 	@Override
 	public void solicitadoRegistro() {
-
+		
+		this.nicksign = vistasign.getNick();
+		this.emailsign = vistasign.getCorreo();
+		this.passsign = vistasign.getPass();
+		this.repetirsign = vistasign.getRepetir();
+		
+		
+		
+		
+          
 	}
 
 	@Override

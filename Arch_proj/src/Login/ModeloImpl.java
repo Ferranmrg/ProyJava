@@ -44,9 +44,20 @@ class ModeloImpl implements Modelo {
 
 	@Override
 	public boolean comprobarSign() {
-		//if()
-		return false;
+		
+		boolean comprobar = true;
+		
+		if(nickSign.equals("")){
+			
+			
+			
+		}
+		
+		
+		return comprobar;
 	}
+
+
 	
 	
 
