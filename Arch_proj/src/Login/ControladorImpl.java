@@ -3,6 +3,7 @@ package Login;
 class ControladorImpl implements Controlador {
 	private Modelo modelo;
 	private VistaLogin vista;
+	private VistaSign vistasign;
 	private String user, pwd;
 
 	@Override
@@ -29,5 +30,6 @@ class ControladorImpl implements Controlador {
 	public void solicitadoRegistro() {
 		
 	}
+
 
 }

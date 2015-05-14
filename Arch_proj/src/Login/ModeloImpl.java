@@ -2,7 +2,8 @@ package Login;
 
 class ModeloImpl implements Modelo {
 	private VistaLogin vista;
-	private String user, pwd;
+	private VistaSign vistasign;
+	private String user, pwd, nickSign, passSign, repetirSign, emailSign;
 
 	@Override
 	public void setVista(VistaLogin vista) {
@@ -23,5 +24,30 @@ class ModeloImpl implements Modelo {
 		} else
 			return false;
 	}
+
+	@Override
+	public void setVistaSign(VistaSign vistasign) {
+		// TODO Auto-generated method stub
+		this.vistasign = vistasign;
+		
+	}
+
+	@Override
+	public void setDatosSign(String nick, String pass, String repetir,
+			String email) {
+		nickSign =nick;
+		passSign=pass;
+		repetirSign=repetir;
+		emailSign=email;
+		
+	}
+
+	@Override
+	public boolean comprobarSign() {
+		//if()
+		return false;
+	}
+	
+	
 
 }
