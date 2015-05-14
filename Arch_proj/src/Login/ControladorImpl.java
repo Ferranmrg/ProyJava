@@ -4,6 +4,7 @@ class ControladorImpl implements Controlador {
 	private Modelo modelo;
 	private VistaLogin vista;
 	private VistaSign vistasign;
+	private VistaWelcome vistaw;
 	private String user, pwd, nicksign,emailsign,passsign,repetirsign;
 
 	@Override
@@ -47,11 +48,25 @@ class ControladorImpl implements Controlador {
 		
 
 	}
+	
+	@Override
+	public void setVistaw(VistaWelcome vistaw) {
+		// TODO Auto-generated method stub
+		this.vistaw = vistaw;
+
+	}
 
 	@Override
 	public void cambioVentanasLogSign() {
 		vistasign.setVisible();
 		vista.setVisible();
+		
+	}
+
+	@Override
+	public void cambioVentanasLogWelcome() {
+		// TODO Auto-generated method stub
+		
 		
 	}
 

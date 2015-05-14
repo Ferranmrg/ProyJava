@@ -7,4 +7,5 @@ public interface Controlador {
 	public boolean solicitadoLogin();
 	public void solicitadoRegistro();
 	public void cambioVentanasLogSign();
+	public void cambioVentanasLogWelcome();
 }
