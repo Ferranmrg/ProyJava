@@ -7,6 +7,7 @@ public class Launcher {
 		Modelo modelo = new ModeloImpl();
 		Controlador controlador = new ControladorImpl();
         VistaSign vistasign = new VistaSignImpl();
+        VistaWelcome vistaW = new VistaWelcomeImpl();
         
 		modelo.setVista(vista);
 		modelo.setVistaSign(vistasign);
@@ -20,6 +21,7 @@ public class Launcher {
 		controlador.setModelo(modelo);
 		controlador.setVista(vista);
 		controlador.setVistaSign(vistasign);
+		controlador.setVistaW(vistaW);
 		
 		vista.setVisible();
 		

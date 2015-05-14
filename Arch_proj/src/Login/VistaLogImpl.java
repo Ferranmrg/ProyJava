@@ -99,7 +99,7 @@ public class VistaLogImpl implements VistaLogin {
 		btnLogIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(controlador.solicitadoLogin()){
-					setVisible();
+					controlador.cambioVentanasLogWelcome();
 				}else{
 					frame.setBounds(100, 100, 385, 322);
 					lblLogError.setVisible(true);

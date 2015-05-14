@@ -152,4 +152,16 @@ public class VistaSignImpl implements VistaSign {
 		}
 				
 	}
+
+	@Override
+	public void setNick() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPass() {
+		// TODO Auto-generated method stub
+		
+	}
 }

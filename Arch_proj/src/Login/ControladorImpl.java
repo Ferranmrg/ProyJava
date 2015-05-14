@@ -50,7 +50,7 @@ class ControladorImpl implements Controlador {
 	}
 	
 	@Override
-	public void setVistaw(VistaWelcome vistaw) {
+	public void setVistaW(VistaWelcome vistaw) {
 		// TODO Auto-generated method stub
 		this.vistaw = vistaw;
 
@@ -65,7 +65,8 @@ class ControladorImpl implements Controlador {
 
 	@Override
 	public void cambioVentanasLogWelcome() {
-		// TODO Auto-generated method stub
+		vistaw.setVisible();
+		vista.setVisible();
 		
 		
 	}
