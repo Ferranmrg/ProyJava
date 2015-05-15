@@ -50,10 +50,6 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		
-		
-	
 
 		JButton btnBaja = new JButton("Baja");
 		btnBaja.addActionListener(new ActionListener() {
@@ -120,6 +116,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 				fila[1] = txtNombre.getText();
 				fila[2] = txtApellido.getText();
 				defTable.addRow(fila);
+				limpiar();
 			}
 		});
 		btnAlta.setBounds(33, 215, 97, 25);
@@ -131,7 +128,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 			@Override
 			public void mousePressed(java.awt.event.MouseEvent arg0) {
 				row = table.getSelectedRow();
-				if ((row > -1)) {
+				if (row > -1) {
 					txtNick.setText((String) defTable.getValueAt(row, 0));
 					txtNombre.setText((String) defTable.getValueAt(row, 1));
 					txtApellido.setText((String) defTable.getValueAt(row, 2));
@@ -159,11 +156,17 @@ public class VistaWelcomeImpl implements VistaWelcome {
 
 	@Override
 	public void setVisible() {
-		if (frame.isVisible() == true) {
+		if (frame.isVisible()) {
 			frame.setVisible(false);
 		} else {
 			frame.setVisible(true);
 		}
 
+	}
+	
+	public void limpiar(){
+		txtNombre.setText("");
+		txtApellido.setText("");
+		txtNick.setText("");
 	}
 }

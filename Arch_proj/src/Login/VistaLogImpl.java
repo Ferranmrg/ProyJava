@@ -56,7 +56,7 @@ public class VistaLogImpl implements VistaLogin {
 
 	@Override
 	public void setVisible() {
-		if(frame.isVisible() == true ){
+		if(frame.isVisible()){
 			frame.setVisible(false);
 		}else{
 			frame.setVisible(true);

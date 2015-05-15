@@ -4,10 +4,11 @@ public class Launcher {
 
 	public static void main(String[] args) {
 		VistaLogin vista = new VistaLogImpl();
+		VistaSign vistasign = new VistaSignImpl();
+        VistaWelcome vistaW = new VistaWelcomeImpl();
 		Modelo modelo = new ModeloImpl();
 		Controlador controlador = new ControladorImpl();
-        VistaSign vistasign = new VistaSignImpl();
-        VistaWelcome vistaW = new VistaWelcomeImpl();
+        
         
 		modelo.setVista(vista);
 		modelo.setVistaSign(vistasign);
@@ -17,6 +18,9 @@ public class Launcher {
 		
 		vistasign.setControlador(controlador);
 		vistasign.setModelo(modelo);
+		
+		vistaW.setControlador(controlador);
+		vistaW.setModelo(modelo);
 		
 		controlador.setModelo(modelo);
 		controlador.setVista(vista);
