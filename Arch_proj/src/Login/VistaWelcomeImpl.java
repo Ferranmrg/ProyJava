@@ -42,6 +42,29 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		initialize();
 	}
 
+	@Override
+	public void setControlador(Controlador controlador) {
+		this.controlador = controlador;
+		controlador.cargaTabla();
+
+	}
+
+	@Override
+	public void setModelo(Modelo modelo) {
+		this.modelo = modelo;
+
+	}
+
+	@Override
+	public void setVisible() {
+		if (frame.isVisible()) {
+			frame.setVisible(false);
+		} else {
+			frame.setVisible(true);
+		}
+
+	}
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -54,7 +77,8 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		JButton btnBaja = new JButton("Baja");
 		btnBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				defTable.removeRow(table.getSelectedRow());
+				if(row>-1)
+				defTable.removeRow(row);
 			}
 		});
 		btnBaja.setBounds(173, 215, 97, 25);
@@ -63,13 +87,15 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		JButton btnModificacion = new JButton("Modificacion");
 		btnModificacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Object[] fila = new Object[3];
-				fila[0] = txtNick.getText();
-				fila[1] = txtNombre.getText();
-				fila[2] = txtApellido.getText();
-				defTable.setValueAt(fila[0], row, 0);
-				defTable.setValueAt(fila[1], row, 1);
-				defTable.setValueAt(fila[2], row, 2);
+				if (row > -1) {
+					Object[] fila = new Object[3];
+					fila[0] = txtNick.getText();
+					fila[1] = txtNombre.getText();
+					fila[2] = txtApellido.getText();
+					defTable.setValueAt(fila[0], row, 0);
+					defTable.setValueAt(fila[1], row, 1);
+					defTable.setValueAt(fila[2], row, 2);
+				}
 			}
 		});
 		btnModificacion.setBounds(323, 215, 97, 25);
@@ -101,13 +127,11 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		JLabel lblApellido = new JLabel("Apellido");
 		lblApellido.setBounds(327, 136, 93, 43);
 		frame.getContentPane().add(lblApellido);
-		
-		
-		String cabecera[] = {"Nombre","Apellido","Nick"};
+
+		String cabecera[] = { "Nombre", "Apellido", "Nick" };
 		String Datos[][] = {};
-		defTable = new DefaultTableModel(Datos , cabecera);
-		
-		
+		defTable = new DefaultTableModel(Datos, cabecera);
+
 		JButton btnAlta = new JButton("Alta");
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -116,12 +140,13 @@ public class VistaWelcomeImpl implements VistaWelcome {
 				fila[1] = txtNombre.getText();
 				fila[2] = txtApellido.getText();
 				defTable.addRow(fila);
+				controlador.TablaInsercion();
 				limpiar();
 			}
 		});
 		btnAlta.setBounds(33, 215, 97, 25);
 		frame.getContentPane().add(btnAlta);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		table = new JTable();
 		table.addMouseListener(new MouseAdapter() {
@@ -141,32 +166,21 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		table.setModel(defTable);
 
 	}
-	
-	@Override
-	public void setControlador(Controlador controlador) {
-		this.controlador = controlador;
 
-	}
-
-	@Override
-	public void setModelo(Modelo modelo) {
-		this.modelo = modelo;
-
-	}
-
-	@Override
-	public void setVisible() {
-		if (frame.isVisible()) {
-			frame.setVisible(false);
-		} else {
-			frame.setVisible(true);
-		}
-
-	}
-	
-	public void limpiar(){
+	public void limpiar() {
 		txtNombre.setText("");
 		txtApellido.setText("");
 		txtNick.setText("");
+	}
+
+	public void cargarTabla(Object[] fila) {
+		defTable.addRow(fila);
+	}
+	
+	public String getUser(){
+		return txtNick.getText();
+	}
+	public String getPwd(){
+		return txtNombre.getText();
 	}
 }

@@ -92,6 +92,11 @@ public class VistaSignImpl implements VistaSign {
 		frame.getContentPane().add(txtRepetir);
 		
 		JButton btnRegister = new JButton("Register");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				controlador.solicitadoRegistro();
+			}
+		});
 		btnRegister.setBounds(123, 213, 117, 29);
 		frame.getContentPane().add(btnRegister);
 		

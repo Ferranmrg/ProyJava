@@ -1,12 +1,21 @@
 package Login;
 
+import java.sql.Connection;
+
 class ControladorImpl implements Controlador {
 	private Modelo modelo;
 	private VistaLogin vista;
 	private VistaSign vistasign;
 	private VistaWelcome vistaw;
 	private String user, pwd, nicksign,emailsign,passsign,repetirsign;
+	private Object[] fila;
+	private Querys query;
+	private Connection con;
 
+	public void setQuery(Querys query){
+		this.query = query;
+	}
+	
 	@Override
 	public void setModelo(Modelo modelo) {
 		// TODO Auto-generated method stub
@@ -35,6 +44,10 @@ class ControladorImpl implements Controlador {
 		this.passsign = vistasign.getPass();
 		this.repetirsign = vistasign.getRepetir();
 		
+		modelo.setDatosSign(nicksign, passsign, repetirsign, emailsign);
+		
+		if(modelo.comprobarSign())
+			this.cambioVentanasLogSign();
 		
 		
 		
@@ -68,6 +81,24 @@ class ControladorImpl implements Controlador {
 		vistaw.setVisible();
 		vista.setVisible();
 		
+		
+	}
+
+	@Override
+	public void cargaTabla() {
+		query.DatosTabla();
+	}
+
+	@Override
+	public void setDB(Connection con) {
+		this.con = con;
+	}
+
+	@Override
+	public void TablaInsercion() {
+		this.user = vistaw.getUser();
+		this.pwd = vistaw.getPwd();
+		query.insertarDatos(user, pwd);
 		
 	}
 

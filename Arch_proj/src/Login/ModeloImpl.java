@@ -1,9 +1,13 @@
 package Login;
 
+import java.sql.Connection;
+
 class ModeloImpl implements Modelo {
 	private VistaLogin vista;
 	private VistaSign vistasign;
 	private String user, pwd, nickSign, passSign, repetirSign, emailSign;
+	private Connection con;
+	private Querys query;
 
 	@Override
 	public void setVista(VistaLogin vista) {
@@ -19,7 +23,7 @@ class ModeloImpl implements Modelo {
 
 	@Override
 	public boolean login() {
-		if (this.user.equals(this.pwd)) {
+		if (query.ConsultaLogin(this.user).equals(this.pwd) && !this.pwd.isEmpty()) {
 			return true;
 		} else
 			return false;
@@ -29,38 +33,42 @@ class ModeloImpl implements Modelo {
 	public void setVistaSign(VistaSign vistasign) {
 		// TODO Auto-generated method stub
 		this.vistasign = vistasign;
-		
+
 	}
 
 	@Override
 	public void setDatosSign(String nick, String pass, String repetir,
 			String email) {
-		nickSign =nick;
-		passSign=pass;
-		repetirSign=repetir;
-		emailSign=email;
-		
+		nickSign = nick;
+		passSign = pass;
+		repetirSign = repetir;
+		emailSign = email;
+
 	}
 
 	@Override
 	public boolean comprobarSign() {
-		
-		boolean comprobar = true;
-		
-		if(nickSign.equals("")){
-			
-			
-			
-			
-			
+
+		boolean comprobar = false;
+
+		if (this.passSign.equals(this.repetirSign) && !query.ExisteUsuario(nickSign)) {
+			query.CrearUsuario(nickSign, passSign);
+			comprobar = true;
 		}
-		
-		
+
 		return comprobar;
 	}
 
+	@Override
+	public void setDB(Connection con) {
+		this.con = con;
 
-	
-	
+	}
+
+	@Override
+	public void setQuery(Querys consulta) {
+		this.query = consulta;
+
+	}
 
 }

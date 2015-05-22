@@ -1,5 +1,7 @@
 package Login;
 
+import java.sql.Connection;
+
 public interface Controlador {
 	public void setModelo(Modelo modelo);
 	public void setVista(VistaLogin vista);
@@ -9,4 +11,8 @@ public interface Controlador {
 	public void solicitadoRegistro();
 	public void cambioVentanasLogSign();
 	public void cambioVentanasLogWelcome();
+	public void cargaTabla();
+	public void setQuery(Querys query);
+	public void setDB(Connection con);
+	public void TablaInsercion();
 }
