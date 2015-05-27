@@ -77,8 +77,8 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		JButton btnBaja = new JButton("Baja");
 		btnBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(row>-1)
-				defTable.removeRow(row);
+				if(row > -1)
+				 defTable.removeRow(row);
 			}
 		});
 		btnBaja.setBounds(173, 215, 97, 25);
