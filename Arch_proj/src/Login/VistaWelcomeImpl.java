@@ -35,7 +35,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 	private DefaultTableModel defTable;
 	private int row;
 
-	/**
+	/**º
 	 * Create the application.
 	 */
 	public VistaWelcomeImpl() {
@@ -94,7 +94,8 @@ public class VistaWelcomeImpl implements VistaWelcome {
 					fila[2] = txtApellido.getText();
 					defTable.setValueAt(fila[0], row, 0);
 					defTable.setValueAt(fila[1], row, 1);
-					defTable.setValueAt(fila[2], row, 2);
+					defTable.setValueAt(fila[2], row, 2
+							);
 				}
 			}
 		});
