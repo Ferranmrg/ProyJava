@@ -15,4 +15,5 @@ public interface Controlador {
 	public void setQuery(Querys query);
 	public void setDB(Connection con);
 	public void TablaInsercion();
+	public void tablaDelete(String usu);
 }

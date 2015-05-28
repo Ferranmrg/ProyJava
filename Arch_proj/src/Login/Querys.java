@@ -106,4 +106,39 @@ public class Querys {
 		}
 		System.out.println("?");
 	}
+	
+	public void borrarDatos(String user) {
+		String query = "DELETE FROM PLSQL.USERS WHERE USERS = ?";
+		try {
+
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setString(1, user);
+			ResultSet resul = pstmt.executeQuery();
+//			if (resul.next())
+//				System.out.println("Correcto");
+//			resul.close();
+
+		} catch (SQLException s) {
+			s.printStackTrace();
+		}
+		System.out.println("?");
+	}
+	
+	public void modificarDatos(String user, String pwd) {
+		String query = "INSERT INTO PLSQL.USERS VALUES (?,?)";
+		try {
+
+			PreparedStatement pstmt = con.prepareStatement(query);
+			pstmt.setString(1, user);
+			pstmt.setString(2,pwd);
+			ResultSet resul = pstmt.executeQuery();
+			if (resul.next())
+				System.out.println("Correcto");
+			resul.close();
+
+		} catch (SQLException s) {
+			s.printStackTrace();
+		}
+		System.out.println("?");
+	}
 }

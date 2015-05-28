@@ -35,8 +35,8 @@ public class VistaWelcomeImpl implements VistaWelcome {
 	private DefaultTableModel defTable;
 	private int row;
 
-	/**º
-	 * Create the application.
+	/**
+	 * º Create the application.
 	 */
 	public VistaWelcomeImpl() {
 		initialize();
@@ -77,8 +77,10 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		JButton btnBaja = new JButton("Baja");
 		btnBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(row > -1)
-				 defTable.removeRow(row);
+				if (row > -1) {
+					controlador.tablaDelete((String)defTable.getValueAt(row, 1));
+					defTable.removeRow(row);
+				}
 			}
 		});
 		btnBaja.setBounds(173, 215, 97, 25);
@@ -94,8 +96,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 					fila[2] = txtApellido.getText();
 					defTable.setValueAt(fila[0], row, 0);
 					defTable.setValueAt(fila[1], row, 1);
-					defTable.setValueAt(fila[2], row, 2
-							);
+					defTable.setValueAt(fila[2], row, 2);
 				}
 			}
 		});
@@ -177,11 +178,12 @@ public class VistaWelcomeImpl implements VistaWelcome {
 	public void cargarTabla(Object[] fila) {
 		defTable.addRow(fila);
 	}
-	
-	public String getUser(){
+
+	public String getUser() {
 		return txtNick.getText();
 	}
-	public String getPwd(){
+
+	public String getPwd() {
 		return txtNombre.getText();
 	}
 }

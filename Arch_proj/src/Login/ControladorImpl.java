@@ -102,6 +102,12 @@ class ControladorImpl implements Controlador {
 		
 	}
 
+	@Override
+	public void tablaDelete(String usu) {
+		// TODO Auto-generated method stub
+		query.borrarDatos(usu);
+	}
+
 	
 	
 
