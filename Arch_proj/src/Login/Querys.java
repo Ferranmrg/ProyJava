@@ -128,10 +128,6 @@ public class Querys {
 			pstmt.setString(2, c2);
 			pstmt.setString(3, usu);
 			ResultSet resul = pstmt.executeQuery();
-			if (resul.next())
-				System.out.println("Correcto");
-			resul.close();
-
 		} catch (SQLException s) {
 			s.printStackTrace();
 		}

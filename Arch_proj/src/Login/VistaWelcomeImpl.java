@@ -80,6 +80,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 				if (row > -1) {
 					controlador.tablaDelete((String)defTable.getValueAt(row, 0));
 					defTable.removeRow(row);
+					row = -1;
 				}
 			}
 		});
@@ -90,14 +91,16 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		btnModificacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (row > -1) {
-					controlador.tablaUpdate((String)defTable.getValueAt(row, 0),txtNick.getText(),txtNombre.getText());
+					String aux = (String)defTable.getValueAt(row, 0);
 					Object[] fila = new Object[3];
 					fila[0] = txtNick.getText();
 					fila[1] = txtNombre.getText();
 					fila[2] = txtApellido.getText();
+					controlador.tablaUpdate(aux,txtNick.getText(),txtNombre.getText());
 					defTable.setValueAt(fila[0], row, 0);
 					defTable.setValueAt(fila[1], row, 1);
 					defTable.setValueAt(fila[2], row, 2);
+					row = -1;
 				}
 			}
 		});
