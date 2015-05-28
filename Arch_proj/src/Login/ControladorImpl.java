@@ -108,6 +108,12 @@ class ControladorImpl implements Controlador {
 		query.borrarDatos(usu);
 	}
 
+	@Override
+	public void tablaUpdate(String usu, String nick, String pwd) {
+		query.modificarDatos(usu,nick,pwd);
+		
+	}
+
 	
 	
 

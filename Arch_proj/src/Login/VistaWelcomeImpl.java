@@ -78,7 +78,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		btnBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (row > -1) {
-					controlador.tablaDelete((String)defTable.getValueAt(row, 1));
+					controlador.tablaDelete((String)defTable.getValueAt(row, 0));
 					defTable.removeRow(row);
 				}
 			}
@@ -90,6 +90,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		btnModificacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (row > -1) {
+					controlador.tablaUpdate((String)defTable.getValueAt(row, 0),txtNick.getText(),txtNombre.getText());
 					Object[] fila = new Object[3];
 					fila[0] = txtNick.getText();
 					fila[1] = txtNombre.getText();

@@ -114,23 +114,19 @@ public class Querys {
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user);
 			ResultSet resul = pstmt.executeQuery();
-//			if (resul.next())
-//				System.out.println("Correcto");
-//			resul.close();
-
 		} catch (SQLException s) {
 			s.printStackTrace();
 		}
-		System.out.println("?");
 	}
 	
-	public void modificarDatos(String user, String pwd) {
-		String query = "INSERT INTO PLSQL.USERS VALUES (?,?)";
+	public void modificarDatos(String usu, String c1, String c2) {
+		String query = "UPDATE PLSQL.USERS SET USERS = ? , PASSWORD = ?  WHERE USERS = ?";
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user);
-			pstmt.setString(2,pwd);
+			pstmt.setString(1, c1);
+			pstmt.setString(2, c2);
+			pstmt.setString(3, usu);
 			ResultSet resul = pstmt.executeQuery();
 			if (resul.next())
 				System.out.println("Correcto");
@@ -139,6 +135,5 @@ public class Querys {
 		} catch (SQLException s) {
 			s.printStackTrace();
 		}
-		System.out.println("?");
 	}
 }
