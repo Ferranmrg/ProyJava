@@ -25,7 +25,7 @@ import java.awt.event.FocusEvent;
 
 public class VistaWelcomeImpl implements VistaWelcome {
 
-	private JFrame frame;
+	private JFrame frmWelcome;
 	private Modelo modelo;
 	private Controlador controlador;
 	private JTextField txtNick;
@@ -36,7 +36,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 	private int row;
 
 	/**
-	 * º Create the application.
+	 * ï¿½ Create the application.
 	 */
 	public VistaWelcomeImpl() {
 		initialize();
@@ -57,10 +57,10 @@ public class VistaWelcomeImpl implements VistaWelcome {
 
 	@Override
 	public void setVisible() {
-		if (frame.isVisible()) {
-			frame.setVisible(false);
+		if (frmWelcome.isVisible()) {
+			frmWelcome.setVisible(false);
 		} else {
-			frame.setVisible(true);
+			frmWelcome.setVisible(true);
 		}
 
 	}
@@ -69,10 +69,11 @@ public class VistaWelcomeImpl implements VistaWelcome {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmWelcome = new JFrame();
+		frmWelcome.setTitle("Welcome");
+		frmWelcome.setBounds(100, 100, 450, 333);
+		frmWelcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmWelcome.getContentPane().setLayout(null);
 
 		JButton btnBaja = new JButton("Baja");
 		btnBaja.addActionListener(new ActionListener() {
@@ -85,7 +86,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 			}
 		});
 		btnBaja.setBounds(173, 215, 97, 25);
-		frame.getContentPane().add(btnBaja);
+		frmWelcome.getContentPane().add(btnBaja);
 
 		JButton btnModificacion = new JButton("Modificacion");
 		btnModificacion.addActionListener(new ActionListener() {
@@ -105,34 +106,34 @@ public class VistaWelcomeImpl implements VistaWelcome {
 			}
 		});
 		btnModificacion.setBounds(323, 215, 97, 25);
-		frame.getContentPane().add(btnModificacion);
+		frmWelcome.getContentPane().add(btnModificacion);
 
 		txtNick = new JTextField();
 		txtNick.setBounds(33, 177, 91, 25);
-		frame.getContentPane().add(txtNick);
+		frmWelcome.getContentPane().add(txtNick);
 		txtNick.setColumns(10);
 
 		txtNombre = new JTextField();
 		txtNombre.setColumns(10);
 		txtNombre.setBounds(173, 177, 97, 25);
-		frame.getContentPane().add(txtNombre);
+		frmWelcome.getContentPane().add(txtNombre);
 
 		txtApellido = new JTextField();
 		txtApellido.setColumns(10);
 		txtApellido.setBounds(323, 177, 91, 25);
-		frame.getContentPane().add(txtApellido);
+		frmWelcome.getContentPane().add(txtApellido);
 
 		JLabel lblNick = new JLabel("Nick");
 		lblNick.setBounds(37, 136, 93, 43);
-		frame.getContentPane().add(lblNick);
+		frmWelcome.getContentPane().add(lblNick);
 
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setBounds(177, 136, 93, 43);
-		frame.getContentPane().add(lblNombre);
+		frmWelcome.getContentPane().add(lblNombre);
 
 		JLabel lblApellido = new JLabel("Apellido");
 		lblApellido.setBounds(327, 136, 93, 43);
-		frame.getContentPane().add(lblApellido);
+		frmWelcome.getContentPane().add(lblApellido);
 
 		String cabecera[] = { "Nombre", "Apellido", "Nick" };
 		String Datos[][] = {};
@@ -151,7 +152,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 			}
 		});
 		btnAlta.setBounds(33, 215, 97, 25);
-		frame.getContentPane().add(btnAlta);
+		frmWelcome.getContentPane().add(btnAlta);
 
 		JScrollPane scrollPane = new JScrollPane();
 		table = new JTable();
@@ -168,8 +169,28 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		});
 		scrollPane.setViewportView(table);
 		scrollPane.setBounds(33, 13, 364, 140);
-		frame.getContentPane().add(scrollPane);
+		frmWelcome.getContentPane().add(scrollPane);
 		table.setModel(defTable);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnSalir.setBounds(105, 263, 97, 29);
+		frmWelcome.getContentPane().add(btnSalir);
+		
+		JButton btnLogOut = new JButton("Log out");
+		btnLogOut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				controlador.cambioVentanasLogWelcome();
+				
+			}
+		});
+		btnLogOut.setBounds(253, 263, 97, 29);
+		frmWelcome.getContentPane().add(btnLogOut);
 
 	}
 

@@ -50,8 +50,14 @@ class ModeloImpl implements Modelo {
 	public boolean comprobarSign() {
 
 		boolean comprobar = false;
+		boolean  cuela = true;
 
-		if (this.passSign.equals(this.repetirSign) && !query.ExisteUsuario(nickSign)) {
+		if(this.passSign.equals("") || this.nickSign.equals("") || this.emailSign.equals("")){
+			vistasign.setError("Campos requeridos vacios");
+			cuela =false;
+		}
+		else
+		 if (this.passSign.equals(this.repetirSign) && !query.ExisteUsuario(nickSign) && cuela == true) {
 			query.CrearUsuario(nickSign, passSign);
 			comprobar = true;
 		}

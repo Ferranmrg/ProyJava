@@ -7,7 +7,6 @@ public interface VistaSign {
 	public String getPass();
 	public String getRepetir();
 	public String getCorreo();
-	public void setNick();
-	public void setPass();
 	public void setVisible();
+	public void setError(String stg);
 }
