@@ -52,12 +52,12 @@ class ModeloImpl implements Modelo {
 		boolean comprobar = false;
 		boolean  cuela = true;
 
-		if(this.passSign.equals("") || this.nickSign.equals("") || this.emailSign.equals("")){
+		if(this.passSign.isEmpty() || this.nickSign.isEmpty() || this.emailSign.isEmpty()){
 			vistasign.setError("Campos requeridos vacios");
 			cuela =false;
 		}
 		else
-		 if (this.passSign.equals(this.repetirSign) && !query.ExisteUsuario(nickSign) && cuela == true) {
+		 if (this.passSign.equals(this.repetirSign) && !query.ExisteUsuario(nickSign) && cuela == true && emailSign.contains("@") && emailSign.contains(".")) {
 			query.CrearUsuario(nickSign, passSign);
 			comprobar = true;
 		}
