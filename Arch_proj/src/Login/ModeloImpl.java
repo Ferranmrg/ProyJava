@@ -54,11 +54,11 @@ class ModeloImpl implements Modelo {
 
 		if(this.passSign.isEmpty() || this.nickSign.isEmpty() || this.emailSign.isEmpty()){
 			vistasign.setError("Campos requeridos vacios");
-			cuela =false;
+			cuela = false;
 		}
 		else
-		 if (this.passSign.equals(this.repetirSign) && !query.ExisteUsuario(nickSign) && cuela == true && emailSign.contains("@") && emailSign.contains(".")) {
-			query.CrearUsuario(nickSign, passSign);
+		 if (this.passSign.equals(this.repetirSign) && !query.ExisteUsuario(nickSign) && cuela  && emailSign.contains("@") && emailSign.contains(".")) {
+			query.CrearUsuario(nickSign, passSign,emailSign);
 			comprobar = true;
 		}
 

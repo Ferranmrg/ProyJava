@@ -23,7 +23,7 @@ public class Querys {
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user);
+			pstmt.setString(1, user.toUpperCase());
 			ResultSet resul = pstmt.executeQuery();
 			if (resul.next())
 				return resul.getString(1);
@@ -35,13 +35,14 @@ public class Querys {
 		return "";
 	}
 
-	public void CrearUsuario(String user, String pwd) {
-		String query = "INSERT INTO PLSQL.USERS VALUES (?,?)";
+	public void CrearUsuario(String user, String pwd,String mail) {
+		String query = "INSERT INTO PLSQL.USERS VALUES (?,?,?)";
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user);
+			pstmt.setString(1, user.toUpperCase());
 			pstmt.setString(2, pwd);
+			pstmt.setString(3, mail);
 			ResultSet resul = pstmt.executeQuery();
 			if (resul.next())
 				System.out.println("Correcto");
@@ -58,7 +59,7 @@ public class Querys {
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user);
+			pstmt.setString(1, user.toUpperCase());
 			ResultSet resul = pstmt.executeQuery();
 			if (resul.next())
 				return true;
@@ -94,7 +95,7 @@ public class Querys {
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user);
+			pstmt.setString(1, user.toUpperCase());
 			pstmt.setString(2, pwd);
 			pstmt.setString(3, email);
 			ResultSet resul = pstmt.executeQuery();
@@ -113,7 +114,7 @@ public class Querys {
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setString(1, user);
+			pstmt.setString(1, user.toUpperCase());
 			ResultSet resul = pstmt.executeQuery();
 		} catch (SQLException s) {
 			s.printStackTrace();
@@ -121,7 +122,7 @@ public class Querys {
 	}
 
 	public void modificarDatos(String usu, String c1, String c2, String c3) {
-		String query = "UPDATE PLSQL.USERS SET USERS = ? , PASSWORD = ?,EMAIL = ?  WHERE USERS = ?";
+		String query = "UPDATE PLSQL.USERS SET USERS = ? , PASSWORD = ?, EMAIL = ?  WHERE USERS = ?";
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
