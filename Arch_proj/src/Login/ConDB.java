@@ -9,8 +9,8 @@ public class ConDB {
 	public ConDB() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@10.211.55.3:1521:XE";
-			String pwd = "system";
+			String url = "jdbc:oracle:thin:@localhost:1521:XE";
+			String pwd = "12102012";
 			String usr = "system";
 			con = DriverManager.getConnection(url, usr, pwd);
 		} catch (SQLException e1) {

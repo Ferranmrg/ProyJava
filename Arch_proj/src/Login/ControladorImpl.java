@@ -98,7 +98,8 @@ class ControladorImpl implements Controlador {
 	public void TablaInsercion() {
 		this.user = vistaw.getUser();
 		this.pwd = vistaw.getPwd();
-		query.insertarDatos(user, pwd);
+		this.emailsign = vistaw.getEmail();
+		query.insertarDatos(user, pwd,emailsign);
 		
 	}
 
@@ -109,8 +110,8 @@ class ControladorImpl implements Controlador {
 	}
 
 	@Override
-	public void tablaUpdate(String usu, String nick, String pwd) {
-		query.modificarDatos(usu,nick,pwd);
+	public void tablaUpdate(String usu, String nick, String pwd, String email) {
+		query.modificarDatos(usu,nick,pwd,email);
 		
 	}
 

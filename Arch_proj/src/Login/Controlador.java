@@ -16,5 +16,5 @@ public interface Controlador {
 	public void setDB(Connection con);
 	public void TablaInsercion();
 	public void tablaDelete(String usu);
-	public void tablaUpdate(String valueAt, String text, String text2);
+	public void tablaUpdate(String user, String usr, String pwd, String email);
 }

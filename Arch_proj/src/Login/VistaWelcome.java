@@ -7,4 +7,5 @@ public interface VistaWelcome {
 	public void cargarTabla(Object[] fila);
 	public String getUser();
 	public String getPwd();
+	public String getEmail();
 }

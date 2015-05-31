@@ -18,22 +18,25 @@ import com.sun.glass.events.MouseEvent;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JScrollPane;
 import javax.swing.JFrame;
+
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.sql.SQLException;
 
 public class VistaWelcomeImpl implements VistaWelcome {
 
 	private JFrame frmWelcome;
 	private Modelo modelo;
 	private Controlador controlador;
-	private JTextField txtNick;
-	private JTextField txtNombre;
-	private JTextField txtApellido;
+	private JTextField txtUsr;
+	private JTextField txtPassword;
+	private JTextField txtEmail;
 	private JTable table;
 	private DefaultTableModel defTable;
-	private int row;
+	private int row = -1;
 
 	/**
 	 * � Create the application.
@@ -78,10 +81,15 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		JButton btnBaja = new JButton("Baja");
 		btnBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (row > -1) {
-					controlador.tablaDelete((String)defTable.getValueAt(row, 0));
-					defTable.removeRow(row);
-					row = -1;
+				try {
+					if (row > -1) {
+						controlador.tablaDelete((String) defTable.getValueAt(
+								row, 0));
+						defTable.removeRow(row);
+						row = -1;
+					}
+				} catch (ArrayIndexOutOfBoundsException e1) {
+					e1.printStackTrace();
 				}
 			}
 		});
@@ -92,12 +100,13 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		btnModificacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (row > -1) {
-					String aux = (String)defTable.getValueAt(row, 0);
+					String aux = (String) defTable.getValueAt(row, 0);
 					Object[] fila = new Object[3];
-					fila[0] = txtNick.getText();
-					fila[1] = txtNombre.getText();
-					fila[2] = txtApellido.getText();
-					controlador.tablaUpdate(aux,txtNick.getText(),txtNombre.getText());
+					fila[0] = txtUsr.getText();
+					fila[1] = txtPassword.getText();
+					fila[2] = txtEmail.getText();
+					controlador.tablaUpdate(aux, txtUsr.getText(),
+							txtPassword.getText(),txtEmail.getText());
 					defTable.setValueAt(fila[0], row, 0);
 					defTable.setValueAt(fila[1], row, 1);
 					defTable.setValueAt(fila[2], row, 2);
@@ -108,47 +117,53 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		btnModificacion.setBounds(323, 215, 97, 25);
 		frmWelcome.getContentPane().add(btnModificacion);
 
-		txtNick = new JTextField();
-		txtNick.setBounds(33, 177, 91, 25);
-		frmWelcome.getContentPane().add(txtNick);
-		txtNick.setColumns(10);
+		txtUsr = new JTextField();
+		txtUsr.setBounds(33, 177, 91, 25);
+		frmWelcome.getContentPane().add(txtUsr);
+		txtUsr.setColumns(10);
 
-		txtNombre = new JTextField();
-		txtNombre.setColumns(10);
-		txtNombre.setBounds(173, 177, 97, 25);
-		frmWelcome.getContentPane().add(txtNombre);
+		txtPassword = new JTextField();
+		txtPassword.setColumns(10);
+		txtPassword.setBounds(173, 177, 97, 25);
+		frmWelcome.getContentPane().add(txtPassword);
 
-		txtApellido = new JTextField();
-		txtApellido.setColumns(10);
-		txtApellido.setBounds(323, 177, 91, 25);
-		frmWelcome.getContentPane().add(txtApellido);
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
+		txtEmail.setBounds(323, 177, 91, 25);
+		frmWelcome.getContentPane().add(txtEmail);
 
-		JLabel lblNick = new JLabel("Nick");
+		JLabel lblNick = new JLabel("Usuario");
 		lblNick.setBounds(37, 136, 93, 43);
 		frmWelcome.getContentPane().add(lblNick);
 
-		JLabel lblNombre = new JLabel("Nombre");
+		JLabel lblNombre = new JLabel("Password");
 		lblNombre.setBounds(177, 136, 93, 43);
 		frmWelcome.getContentPane().add(lblNombre);
 
-		JLabel lblApellido = new JLabel("Apellido");
+		JLabel lblApellido = new JLabel("Email");
 		lblApellido.setBounds(327, 136, 93, 43);
 		frmWelcome.getContentPane().add(lblApellido);
 
-		String cabecera[] = { "Nombre", "Apellido", "Nick" };
+		String cabecera[] = { "Usuario", "Password", "Email" };
 		String Datos[][] = {};
 		defTable = new DefaultTableModel(Datos, cabecera);
 
 		JButton btnAlta = new JButton("Alta");
 		btnAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Object[] fila = new Object[3];
-				fila[0] = txtNick.getText();
-				fila[1] = txtNombre.getText();
-				fila[2] = txtApellido.getText();
-				defTable.addRow(fila);
-				controlador.TablaInsercion();
-				limpiar();
+				try {
+					Object[] fila = new Object[3];
+					fila[0] = txtUsr.getText();
+					fila[1] = txtPassword.getText();
+					fila[2] = txtEmail.getText();
+					if (!fila[0].equals("") && !fila[1].equals("")) {
+						defTable.addRow(fila);
+						controlador.TablaInsercion();
+						limpiar();
+					}
+				} catch (ArrayIndexOutOfBoundsException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		btnAlta.setBounds(33, 215, 97, 25);
@@ -161,9 +176,9 @@ public class VistaWelcomeImpl implements VistaWelcome {
 			public void mousePressed(java.awt.event.MouseEvent arg0) {
 				row = table.getSelectedRow();
 				if (row > -1) {
-					txtNick.setText((String) defTable.getValueAt(row, 0));
-					txtNombre.setText((String) defTable.getValueAt(row, 1));
-					txtApellido.setText((String) defTable.getValueAt(row, 2));
+					txtUsr.setText((String) defTable.getValueAt(row, 0));
+					txtPassword.setText((String) defTable.getValueAt(row, 1));
+					txtEmail.setText((String) defTable.getValueAt(row, 2));
 				}
 			}
 		});
@@ -171,7 +186,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		scrollPane.setBounds(33, 13, 364, 140);
 		frmWelcome.getContentPane().add(scrollPane);
 		table.setModel(defTable);
-		
+
 		JButton btnSalir = new JButton("Salir");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -180,13 +195,13 @@ public class VistaWelcomeImpl implements VistaWelcome {
 		});
 		btnSalir.setBounds(105, 263, 97, 29);
 		frmWelcome.getContentPane().add(btnSalir);
-		
+
 		JButton btnLogOut = new JButton("Log out");
 		btnLogOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				controlador.cambioVentanasLogWelcome();
-				
+
 			}
 		});
 		btnLogOut.setBounds(253, 263, 97, 29);
@@ -195,9 +210,9 @@ public class VistaWelcomeImpl implements VistaWelcome {
 	}
 
 	public void limpiar() {
-		txtNombre.setText("");
-		txtApellido.setText("");
-		txtNick.setText("");
+		txtPassword.setText("");
+		txtEmail.setText("");
+		txtUsr.setText("");
 	}
 
 	public void cargarTabla(Object[] fila) {
@@ -205,10 +220,13 @@ public class VistaWelcomeImpl implements VistaWelcome {
 	}
 
 	public String getUser() {
-		return txtNick.getText();
+		return txtUsr.getText();
 	}
 
 	public String getPwd() {
-		return txtNombre.getText();
+		return txtPassword.getText();
+	}
+	public String getEmail() {
+		return txtEmail.getText();
 	}
 }

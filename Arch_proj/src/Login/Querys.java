@@ -9,8 +9,8 @@ import java.sql.Statement;
 public class Querys {
 	private Connection con;
 	private VistaWelcome VW;
-	
-	public void setVista(VistaWelcome VW){
+
+	public void setVista(VistaWelcome VW) {
 		this.VW = VW;
 	}
 
@@ -34,14 +34,14 @@ public class Querys {
 		}
 		return "";
 	}
-	
-	public void CrearUsuario(String user,String pwd) {
+
+	public void CrearUsuario(String user, String pwd) {
 		String query = "INSERT INTO PLSQL.USERS VALUES (?,?)";
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user);
-			pstmt.setString(2,pwd);
+			pstmt.setString(2, pwd);
 			ResultSet resul = pstmt.executeQuery();
 			if (resul.next())
 				System.out.println("Correcto");
@@ -52,7 +52,7 @@ public class Querys {
 		}
 		System.out.println("?");
 	}
-	
+
 	public boolean ExisteUsuario(String user) {
 		String query = "SELECT USERS FROM PLSQL.USERS WHERE USERS = ?";
 		try {
@@ -69,17 +69,17 @@ public class Querys {
 		}
 		return false;
 	}
-	
+
 	public void DatosTabla() {
 		String query = "SELECT * FROM PLSQL.USERS";
 		try {
 			Object[] fila = new Object[3];
 			PreparedStatement pstmt = con.prepareStatement(query);
 			ResultSet resul = pstmt.executeQuery();
-			while (resul.next()){
+			while (resul.next()) {
 				fila[0] = resul.getString(1);
 				fila[1] = resul.getString(2);
-				fila[2] = "NULL";
+				fila[2] = resul.getString(3);
 				VW.cargarTabla(fila);
 			}
 			resul.close();
@@ -88,14 +88,15 @@ public class Querys {
 			s.printStackTrace();
 		}
 	}
-	
-	public void insertarDatos(String user, String pwd) {
-		String query = "INSERT INTO PLSQL.USERS VALUES (?,?)";
+
+	public void insertarDatos(String user, String pwd, String email) {
+		String query = "INSERT INTO PLSQL.USERS VALUES (?,?,?)";
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user);
-			pstmt.setString(2,pwd);
+			pstmt.setString(2, pwd);
+			pstmt.setString(3, email);
 			ResultSet resul = pstmt.executeQuery();
 			if (resul.next())
 				System.out.println("Correcto");
@@ -106,7 +107,7 @@ public class Querys {
 		}
 		System.out.println("?");
 	}
-	
+
 	public void borrarDatos(String user) {
 		String query = "DELETE FROM PLSQL.USERS WHERE USERS = ?";
 		try {
@@ -118,15 +119,16 @@ public class Querys {
 			s.printStackTrace();
 		}
 	}
-	
-	public void modificarDatos(String usu, String c1, String c2) {
-		String query = "UPDATE PLSQL.USERS SET USERS = ? , PASSWORD = ?  WHERE USERS = ?";
+
+	public void modificarDatos(String usu, String c1, String c2, String c3) {
+		String query = "UPDATE PLSQL.USERS SET USERS = ? , PASSWORD = ?,EMAIL = ?  WHERE USERS = ?";
 		try {
 
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1, c1);
 			pstmt.setString(2, c2);
-			pstmt.setString(3, usu);
+			pstmt.setString(3, c3);
+			pstmt.setString(4, usu);
 			ResultSet resul = pstmt.executeQuery();
 		} catch (SQLException s) {
 			s.printStackTrace();
