@@ -72,7 +72,7 @@ public class VistaLogImpl implements VistaLogin {
 	private void initialize() {
 		frmLogIn = new JFrame();
 		frmLogIn.setTitle("Log In");
-		frmLogIn.setBounds(100, 100, 385, 254);
+		frmLogIn.setBounds(100, 100, 385, 271);
 		frmLogIn.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmLogIn.getContentPane().setLayout(null);
 		

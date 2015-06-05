@@ -74,7 +74,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 	private void initialize() {
 		frmWelcome = new JFrame();
 		frmWelcome.setTitle("Welcome");
-		frmWelcome.setBounds(100, 100, 450, 333);
+		frmWelcome.setBounds(100, 100, 649, 394);
 		frmWelcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmWelcome.getContentPane().setLayout(null);
 
@@ -93,7 +93,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 				}
 			}
 		});
-		btnBaja.setBounds(173, 215, 97, 25);
+		btnBaja.setBounds(33, 253, 115, 25);
 		frmWelcome.getContentPane().add(btnBaja);
 
 		JButton btnModificacion = new JButton("Modificacion");
@@ -114,35 +114,23 @@ public class VistaWelcomeImpl implements VistaWelcome {
 				}
 			}
 		});
-		btnModificacion.setBounds(323, 215, 97, 25);
+		btnModificacion.setBounds(33, 291, 115, 25);
 		frmWelcome.getContentPane().add(btnModificacion);
 
 		txtUsr = new JTextField();
-		txtUsr.setBounds(33, 177, 91, 25);
+		txtUsr.setBounds(33, 164, 183, 25);
 		frmWelcome.getContentPane().add(txtUsr);
 		txtUsr.setColumns(10);
 
 		txtPassword = new JTextField();
 		txtPassword.setColumns(10);
-		txtPassword.setBounds(173, 177, 97, 25);
+		txtPassword.setBounds(228, 164, 186, 25);
 		frmWelcome.getContentPane().add(txtPassword);
 
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
-		txtEmail.setBounds(323, 177, 91, 25);
+		txtEmail.setBounds(426, 164, 183, 25);
 		frmWelcome.getContentPane().add(txtEmail);
-
-		JLabel lblNick = new JLabel("Usuario");
-		lblNick.setBounds(37, 136, 93, 43);
-		frmWelcome.getContentPane().add(lblNick);
-
-		JLabel lblNombre = new JLabel("Password");
-		lblNombre.setBounds(177, 136, 93, 43);
-		frmWelcome.getContentPane().add(lblNombre);
-
-		JLabel lblApellido = new JLabel("Email");
-		lblApellido.setBounds(327, 136, 93, 43);
-		frmWelcome.getContentPane().add(lblApellido);
 
 		String cabecera[] = { "Usuario", "Password", "Email" };
 		String Datos[][] = {};
@@ -166,7 +154,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 				}
 			}
 		});
-		btnAlta.setBounds(33, 215, 97, 25);
+		btnAlta.setBounds(33, 215, 115, 25);
 		frmWelcome.getContentPane().add(btnAlta);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -183,7 +171,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 			}
 		});
 		scrollPane.setViewportView(table);
-		scrollPane.setBounds(33, 13, 364, 140);
+		scrollPane.setBounds(33, 13, 576, 140);
 		frmWelcome.getContentPane().add(scrollPane);
 		table.setModel(defTable);
 
@@ -193,7 +181,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 				System.exit(0);
 			}
 		});
-		btnSalir.setBounds(33, 263, 97, 29);
+		btnSalir.setBounds(369, 276, 115, 42);
 		frmWelcome.getContentPane().add(btnSalir);
 
 		JButton btnLogOut = new JButton("Log out");
@@ -204,16 +192,16 @@ public class VistaWelcomeImpl implements VistaWelcome {
 
 			}
 		});
-		btnLogOut.setBounds(173, 263, 97, 29);
+		btnLogOut.setBounds(512, 215, 97, 101);
 		frmWelcome.getContentPane().add(btnLogOut);
 		
-		JButton btnConfiguracion = new JButton("Configuracion");
+		JButton btnConfiguracion = new JButton("Config");
 		btnConfiguracion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controlador.cambioVentanasInitWelcome();
 			}
 		});
-		btnConfiguracion.setBounds(323, 265, 97, 25);
+		btnConfiguracion.setBounds(369, 215, 115, 48);
 		frmWelcome.getContentPane().add(btnConfiguracion);
 
 	}

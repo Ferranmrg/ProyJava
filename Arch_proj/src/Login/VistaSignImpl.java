@@ -43,8 +43,8 @@ public class VistaSignImpl implements VistaSign {
 		frmRegistro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmRegistro.getContentPane().setLayout(null);
 		
-		JLabel lblNick = new JLabel(" *Nick:");
-		lblNick.setBounds(31, 30, 61, 16);
+		JLabel lblNick = new JLabel("*Nick:");
+		lblNick.setBounds(20, 30, 61, 16);
 		frmRegistro.getContentPane().add(lblNick);
 		
 		JLabel lblNombre = new JLabel("Nombre:");
@@ -59,8 +59,8 @@ public class VistaSignImpl implements VistaSign {
 		lblEmail.setBounds(277, 30, 48, 16);
 		frmRegistro.getContentPane().add(lblEmail);
 		
-		JLabel lblContrasea = new JLabel("*Contraseña:");
-		lblContrasea.setBounds(243, 93, 93, 16);
+		JLabel lblContrasea = new JLabel("*Password:");
+		lblContrasea.setBounds(251, 93, 93, 16);
 		frmRegistro.getContentPane().add(lblContrasea);
 		
 		JLabel lblRepetir = new JLabel("Repetir:");
