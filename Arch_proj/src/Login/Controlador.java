@@ -7,6 +7,7 @@ public interface Controlador {
 	public void setVista(VistaLogin vista);
     public void setVistaSign(VistaSign vistasign);
     public void setVistaW(VistaWelcome vistaW);
+    public void setVistaInt(VistaInit vistaint);
 	public boolean solicitadoLogin();
 	public void solicitadoRegistro();
 	public void cambioVentanasLogSign();
@@ -17,4 +18,6 @@ public interface Controlador {
 	public void TablaInsercion();
 	public void tablaDelete(String usu);
 	public void tablaUpdate(String user, String usr, String pwd, String email);
+	public void insertarInit();
+	public void cambioVentanasInitWelcome();
 }

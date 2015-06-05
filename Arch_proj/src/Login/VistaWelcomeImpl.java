@@ -193,7 +193,7 @@ public class VistaWelcomeImpl implements VistaWelcome {
 				System.exit(0);
 			}
 		});
-		btnSalir.setBounds(105, 263, 97, 29);
+		btnSalir.setBounds(33, 263, 97, 29);
 		frmWelcome.getContentPane().add(btnSalir);
 
 		JButton btnLogOut = new JButton("Log out");
@@ -204,8 +204,17 @@ public class VistaWelcomeImpl implements VistaWelcome {
 
 			}
 		});
-		btnLogOut.setBounds(253, 263, 97, 29);
+		btnLogOut.setBounds(173, 263, 97, 29);
 		frmWelcome.getContentPane().add(btnLogOut);
+		
+		JButton btnConfiguracion = new JButton("Configuracion");
+		btnConfiguracion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.cambioVentanasInitWelcome();
+			}
+		});
+		btnConfiguracion.setBounds(323, 265, 97, 25);
+		frmWelcome.getContentPane().add(btnConfiguracion);
 
 	}
 

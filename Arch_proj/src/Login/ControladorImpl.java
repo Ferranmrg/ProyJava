@@ -1,11 +1,14 @@
 package Login;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 
 class ControladorImpl implements Controlador {
 	private Modelo modelo;
 	private VistaLogin vista;
 	private VistaSign vistasign;
+	private VistaInit vistaint;
 	private VistaWelcome vistaw;
 	private String user, pwd, nicksign,emailsign,passsign,repetirsign;
 	private Object[] fila;
@@ -112,6 +115,34 @@ class ControladorImpl implements Controlador {
 	@Override
 	public void tablaUpdate(String usu, String nick, String pwd, String email) {
 		query.modificarDatos(usu,nick,pwd,email);
+		
+	}
+
+	@Override
+	public void setVistaInt(VistaInit vistaint) {
+		try {
+			modelo.muestraContenido();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.vistaint = vistaint;
+		
+	}
+
+	@Override
+	public void insertarInit() {
+		modelo.EscribirInit();
+		
+	}
+
+	@Override
+	public void cambioVentanasInitWelcome() {
+		vistaw.setVisible();
+		vistaint.setVisible();
 		
 	}
 
